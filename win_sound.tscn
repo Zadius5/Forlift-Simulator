@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://odk5maj5o0b7"]
+
+[ext_resource type="AudioStream" uid="uid://b3k1ij7ikufpl" path="res://assets/onlymp3.to - Winning Sound Effect-VJ8FQSh-H4U-192k-1706481887.mp3" id="1_sqlvg"]
+
+[node name="win_sound" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_sqlvg")

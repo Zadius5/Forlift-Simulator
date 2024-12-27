@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://co7txat7gmhwf"]
+
+[ext_resource type="Script" path="res://death_screen.gd" id="1_jxyvw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiokw"]
+font_size = 50
+
+[node name="death_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+script = ExtResource("1_jxyvw")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Exploded"
+label_settings = SubResource("LabelSettings_eiokw")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="quit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="restart" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/restart" to="." method="_on_restart_pressed"]

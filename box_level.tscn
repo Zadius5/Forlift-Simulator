@@ -1,0 +1,110 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1g8v6b544f"]
+
+[ext_resource type="Script" path="res://level1.gd" id="1_j678o"]
+[ext_resource type="PackedScene" uid="uid://cu22xxkyna1gs" path="res://warehouse.tscn" id="2_tgx24"]
+[ext_resource type="PackedScene" uid="uid://c04v0qws1elcq" path="res://fork_lift.tscn" id="3_l86gp"]
+[ext_resource type="PackedScene" uid="uid://b1svf2cmcewrp" path="res://box.tscn" id="4_pu3rk"]
+[ext_resource type="PackedScene" uid="uid://cr7jdvhhvspwq" path="res://delivery_area.tscn" id="5_tunsy"]
+[ext_resource type="PackedScene" uid="uid://b7y8icoxsxby4" path="res://hud.tscn" id="6_66ap2"]
+[ext_resource type="PackedScene" uid="uid://2p256wbvnq77" path="res://shelves.tscn" id="7_cox8d"]
+[ext_resource type="PackedScene" uid="uid://cf8aq8c0gosgm" path="res://floor_is_lava.tscn" id="8_0771q"]
+[ext_resource type="PackedScene" uid="uid://53whfjpd6r3x" path="res://explode_sound.tscn" id="9_epheh"]
+[ext_resource type="PackedScene" uid="uid://odk5maj5o0b7" path="res://win_sound.tscn" id="11_bad4m"]
+
+[node name="level_1" type="Node3D"]
+script = ExtResource("1_j678o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.885626, -0.446021, 0.129356, 0.10523, 0.0785641, 0.99134, -0.452321, 0.891568, -0.0226435, 0, 0, 0)
+shadow_enabled = true
+
+[node name="warehouse" parent="." instance=ExtResource("2_tgx24")]
+
+[node name="fork_lift" parent="." instance=ExtResource("3_l86gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0362799, 1.30951, -21.2967)
+
+[node name="box" parent="." instance=ExtResource("4_pu3rk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233844, 1.24015, -17.7746)
+mass = 1.0
+
+[node name="delivery_area" parent="." instance=ExtResource("5_tunsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 18)
+
+[node name="hud" parent="." instance=ExtResource("6_66ap2")]
+
+[node name="objective" parent="hud" index="3"]
+text = "OBJECTIVE : Deliver box"
+
+[node name="shelves" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.2243, 2.64618, -17.344)
+
+[node name="shelves2" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.9358, 2.64618, -17.5298)
+
+[node name="shelves3" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.87593, 2.64618, -17.5298)
+
+[node name="shelves4" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.16682, 2.64618, -17.5298)
+
+[node name="shelves5" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.28953, 2.64618, -7.47225)
+
+[node name="shelves6" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.5198, 2.64618, -7.55933)
+
+[node name="shelves7" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.64714, 2.64618, -7.60286)
+
+[node name="shelves8" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.2243, 2.64618, -7.38517)
+
+[node name="shelves9" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.6064, 1.64618, 1.17574)
+
+[node name="shelves10" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.39462, 2.64618, 1.36374)
+
+[node name="shelves11" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.71292, 2.64618, 1.64573)
+
+[node name="shelves12" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.7027, 2.64618, 2.5857)
+
+[node name="shelves13" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-0.999989, 0, -0.00466003, 0, 1, 0, 0.00466003, 0, -0.999989, -14.5045, 2.64618, 19.5053)
+
+[node name="shelves14" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-0.999989, 0, -0.00466003, 0, 1, 0, 0.00466003, 0, -0.999989, -3.78875, 1.64618, 19.5053)
+
+[node name="shelves15" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-0.999989, 0, -0.00466003, 0, 1, 0, 0.00466003, 0, -0.999989, 6.17499, 2.64618, 19.5053)
+
+[node name="shelves16" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-0.999989, 0, -0.00466003, 0, 1, 0, 0.00466003, 0, -0.999989, 16.2327, 2.64618, 19.5053)
+
+[node name="shelves17" parent="." instance=ExtResource("7_cox8d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.6064, 2.64618, 1.17574)
+
+[node name="floor_is_lava" parent="." instance=ExtResource("8_0771q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+
+[node name="explode_sound" parent="." instance=ExtResource("9_epheh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+max_db = -10.0
+
+[node name="win_sound" parent="." instance=ExtResource("11_bad4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[connection signal="fall" from="fork_lift" to="." method="_on_fork_lift_fall"]
+[connection signal="body_entered" from="delivery_area" to="." method="_on_delivery_area_body_entered"]
+[connection signal="next" from="hud" to="." method="_on_hud_next"]
+[connection signal="quit" from="hud" to="." method="_on_hud_quit"]
+[connection signal="restart" from="hud" to="." method="_on_hud_restart"]
+[connection signal="time_up" from="hud" to="." method="_on_hud_time_up"]
+[connection signal="body_entered" from="floor_is_lava" to="." method="_on_floor_is_lava_body_entered"]
+[connection signal="body_exited" from="floor_is_lava" to="." method="_on_floor_is_lava_body_exited"]
+
+[editable path="hud"]
+[editable path="floor_is_lava"]

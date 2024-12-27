@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqqpfto8b2jmn"]
+
+[ext_resource type="PackedScene" uid="uid://bxyfdo8056pu1" path="res://longhouse.tscn" id="1_u1yly"]
+[ext_resource type="Script" path="res://tenis_level.gd" id="1_ucqpc"]
+[ext_resource type="PackedScene" uid="uid://d0mxiwwybkbh6" path="res://pole.tscn" id="2_6wto2"]
+[ext_resource type="PackedScene" uid="uid://c04v0qws1elcq" path="res://fork_lift.tscn" id="3_ewqav"]
+[ext_resource type="PackedScene" uid="uid://b2g620uy351o0" path="res://tenis.tscn" id="4_xalks"]
+[ext_resource type="PackedScene" uid="uid://b7y8icoxsxby4" path="res://hud.tscn" id="5_cl3u1"]
+[ext_resource type="PackedScene" uid="uid://cf8aq8c0gosgm" path="res://floor_is_lava.tscn" id="6_mktr3"]
+[ext_resource type="PackedScene" uid="uid://cr7jdvhhvspwq" path="res://delivery_area.tscn" id="7_bd7i5"]
+[ext_resource type="PackedScene" uid="uid://53whfjpd6r3x" path="res://explode_sound.tscn" id="9_2nent"]
+[ext_resource type="PackedScene" uid="uid://odk5maj5o0b7" path="res://win_sound.tscn" id="10_ba0n7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnjle"]
+size = Vector3(50, 0.1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ticvt"]
+size = Vector3(50, 0.1, 100)
+
+[node name="tenis_level" type="Node3D"]
+script = ExtResource("1_ucqpc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.893374, -0.449251, -0.00748543, -0.0105583, 0.00433521, 0.999935, -0.449189, 0.893395, -0.0086163, 0, 0, 0)
+shadow_enabled = true
+
+[node name="longhouse" parent="." instance=ExtResource("1_u1yly")]
+
+[node name="pole" parent="." instance=ExtResource("2_6wto2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1311, 3, -24.642)
+
+[node name="pole2" parent="." instance=ExtResource("2_6wto2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3262, 3, -11.642)
+
+[node name="pole3" parent="." instance=ExtResource("2_6wto2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4708, 3, 5.896)
+
+[node name="pole4" parent="." instance=ExtResource("2_6wto2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3, 23.019)
+
+[node name="fork_lift" parent="." instance=ExtResource("3_ewqav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31738, 1.09908, -44.1146)
+
+[node name="tenis" parent="." instance=ExtResource("4_xalks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.989693, 0.672159, -40.3723)
+mass = 0.1
+
+[node name="hud" parent="." instance=ExtResource("5_cl3u1")]
+
+[node name="objective" parent="hud" index="3"]
+text = "OBJECTIVE : Deliver tennis ball"
+
+[node name="floor_is_lava" parent="." instance=ExtResource("6_mktr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+
+[node name="MeshInstance3D" parent="floor_is_lava" index="0"]
+mesh = SubResource("BoxMesh_bnjle")
+
+[node name="CollisionShape3D" parent="floor_is_lava" index="1"]
+shape = SubResource("BoxShape3D_ticvt")
+
+[node name="delivery_area" parent="." instance=ExtResource("7_bd7i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8124, 1.54636, 45.078)
+
+[node name="pole5" parent="." instance=ExtResource("2_6wto2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4708, 3, 38.2201)
+
+[node name="explode_sound" parent="." instance=ExtResource("9_2nent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 12)
+
+[node name="win_sound" parent="." instance=ExtResource("10_ba0n7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 23)
+
+[connection signal="fall" from="fork_lift" to="." method="_on_fork_lift_fall"]
+[connection signal="next" from="hud" to="." method="_on_hud_next"]
+[connection signal="quit" from="hud" to="." method="_on_hud_quit"]
+[connection signal="restart" from="hud" to="." method="_on_hud_restart"]
+[connection signal="time_up" from="hud" to="." method="_on_hud_time_up"]
+[connection signal="body_entered" from="floor_is_lava" to="." method="_on_floor_is_lava_body_entered"]
+[connection signal="body_exited" from="floor_is_lava" to="." method="_on_floor_is_lava_body_exited"]
+[connection signal="body_entered" from="delivery_area" to="." method="_on_delivery_area_body_entered"]
+
+[editable path="hud"]
+[editable path="floor_is_lava"]

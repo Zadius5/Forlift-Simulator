@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://53whfjpd6r3x"]
+
+[ext_resource type="AudioStream" uid="uid://d0n5skcsfu4d6" path="res://assets/110114__ryansnook__nuclear-explosion.mp3" id="1_ryvim"]
+
+[node name="explode_sound" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_ryvim")
+max_db = -20.0

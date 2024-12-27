@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://duog7c7e4oemj"]
+
+[ext_resource type="Script" path="res://level2.gd" id="1_ooqs8"]
+[ext_resource type="PackedScene" uid="uid://cu22xxkyna1gs" path="res://warehouse.tscn" id="2_q437m"]
+[ext_resource type="PackedScene" uid="uid://2p256wbvnq77" path="res://shelves.tscn" id="3_wjhen"]
+[ext_resource type="PackedScene" uid="uid://c04v0qws1elcq" path="res://fork_lift.tscn" id="4_6fpvo"]
+[ext_resource type="PackedScene" uid="uid://cri8a76k8wft" path="res://fridge.tscn" id="5_2aq1r"]
+[ext_resource type="PackedScene" uid="uid://cr7jdvhhvspwq" path="res://delivery_area.tscn" id="6_e64tq"]
+[ext_resource type="PackedScene" uid="uid://b7y8icoxsxby4" path="res://hud.tscn" id="7_cg4dn"]
+[ext_resource type="PackedScene" uid="uid://cf8aq8c0gosgm" path="res://floor_is_lava.tscn" id="8_dab7j"]
+[ext_resource type="PackedScene" uid="uid://53whfjpd6r3x" path="res://explode_sound.tscn" id="9_3lle7"]
+[ext_resource type="PackedScene" uid="uid://odk5maj5o0b7" path="res://win_sound.tscn" id="10_4q7aa"]
+
+[node name="level2" type="Node3D"]
+script = ExtResource("1_ooqs8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.895873, -0.444168, -0.0112788, -0.00454071, -0.0162309, 0.999858, -0.444288, 0.895797, 0.012524, 0, 0, 0)
+shadow_enabled = true
+
+[node name="warehouse" parent="." instance=ExtResource("2_q437m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.932723, 0, -0.175931)
+
+[node name="shelves" parent="warehouse" instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3233, 2, -5.60688)
+
+[node name="shelves2" parent="warehouse" instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9546, 2, -5.13683)
+
+[node name="fork_lift" parent="." instance=ExtResource("4_6fpvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8177, 1.21149, -20.5853)
+
+[node name="fridge" parent="." instance=ExtResource("5_2aq1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70198, 2.30786, -15.6734)
+mass = 1.0
+
+[node name="delivery_area" parent="." instance=ExtResource("6_e64tq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24003, 6.77008, 20.2797)
+
+[node name="shelves" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517, 2, -5.60688)
+
+[node name="shelves2" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40895, 2, 3.69041)
+
+[node name="shelves3" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55067, 2, 3.56204)
+
+[node name="shelves4" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.352, 2.28641, 3.54707)
+
+[node name="shelves5" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2773, 2, 3.40239)
+
+[node name="shelves6" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.417, 2.18887, 12.5863)
+
+[node name="shelves7" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46809, 2.03545, 12.5102)
+
+[node name="shelves8" parent="." instance=ExtResource("3_wjhen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2351, 1.83737, 12.5035)
+
+[node name="hud" parent="." instance=ExtResource("7_cg4dn")]
+
+[node name="objective" parent="hud" index="3"]
+text = "OBJECTIVE: Deliver fridge
+"
+
+[node name="floor_is_lava" parent="." instance=ExtResource("8_dab7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+
+[node name="explode_sound" parent="." instance=ExtResource("9_3lle7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -2)
+
+[node name="win_sound" parent="." instance=ExtResource("10_4q7aa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
+
+[connection signal="fall" from="fork_lift" to="." method="_on_fork_lift_fall"]
+[connection signal="body_entered" from="delivery_area" to="." method="_on_delivery_area_body_entered"]
+[connection signal="next" from="hud" to="." method="_on_hud_next"]
+[connection signal="quit" from="hud" to="." method="_on_hud_quit"]
+[connection signal="restart" from="hud" to="." method="_on_hud_restart"]
+[connection signal="time_up" from="hud" to="." method="_on_hud_time_up"]
+[connection signal="body_entered" from="floor_is_lava" to="." method="_on_floor_is_lava_body_entered"]
+[connection signal="body_exited" from="floor_is_lava" to="." method="_on_floor_is_lava_body_exited"]
+
+[editable path="hud"]

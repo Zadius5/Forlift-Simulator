@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0mxiwwybkbh6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oatfw"]
+size = Vector3(30, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2572"]
+albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
+metallic = 1.0
+roughness = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g1c2k"]
+material = SubResource("StandardMaterial3D_u2572")
+top_radius = 0.7
+bottom_radius = 0.7
+height = 30.0
+
+[node name="pole" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oatfw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_g1c2k")

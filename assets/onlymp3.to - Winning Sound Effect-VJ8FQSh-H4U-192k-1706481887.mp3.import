@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3k1ij7ikufpl"
+path="res://.godot/imported/onlymp3.to - Winning Sound Effect-VJ8FQSh-H4U-192k-1706481887.mp3-21188f7dfa1135d80c524f33bd1b42f3.mp3str"
+
+[deps]
+
+source_file="res://assets/onlymp3.to - Winning Sound Effect-VJ8FQSh-H4U-192k-1706481887.mp3"
+dest_files=["res://.godot/imported/onlymp3.to - Winning Sound Effect-VJ8FQSh-H4U-192k-1706481887.mp3-21188f7dfa1135d80c524f33bd1b42f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

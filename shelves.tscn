@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://2p256wbvnq77"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0fjf"]
+albedo_color = Color(0.313726, 0.313726, 0.313726, 1)
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1j82f"]
+material = SubResource("StandardMaterial3D_j0fjf")
+size = Vector3(5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e10ej"]
+size = Vector3(5.967, 6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtup8"]
+albedo_color = Color(1, 0.721569, 0.0705882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8wr3f"]
+material = SubResource("StandardMaterial3D_wtup8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1a22"]
+albedo_color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_21jsc"]
+material = SubResource("StandardMaterial3D_k1a22")
+size = Vector3(0.5, 6, 1)
+
+[node name="shelves" type="RigidBody3D"]
+mass = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47479, 0)
+mesh = SubResource("BoxMesh_1j82f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_e10ej")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14303, 0)
+mesh = SubResource("BoxMesh_1j82f")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47479, 0)
+mesh = SubResource("BoxMesh_1j82f")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51593, -1.46555, 0)
+mesh = SubResource("BoxMesh_8wr3f")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0593511, -1.49557, 0)
+mesh = SubResource("BoxMesh_8wr3f")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5058, -1.51057, 0)
+mesh = SubResource("BoxMesh_8wr3f")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51593, 1.13854, 0)
+mesh = SubResource("BoxMesh_8wr3f")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118451, 1.10267, 0)
+mesh = SubResource("BoxMesh_8wr3f")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74348, 1.12191, 0)
+mesh = SubResource("BoxMesh_8wr3f")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74956, 0.0257068, 0.07828)
+mesh = SubResource("BoxMesh_21jsc")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72686, 0.0257068, 0.07828)
+mesh = SubResource("BoxMesh_21jsc")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5182, 0)
+mesh = SubResource("BoxMesh_1j82f")

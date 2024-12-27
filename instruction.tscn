@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm6kt3rw6cjxy"]
+
+[ext_resource type="Script" path="res://instruction.gd" id="1_bola0"]
+[ext_resource type="Texture2D" uid="uid://ddkktyj8lg3ny" path="res://assets/Clipboard_01.svg.png" id="1_bonbs"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bola0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 511)
+scale = Vector2(1.43646, 0.590132)
+texture = ExtResource("1_bonbs")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 119.0
+offset_top = 141.0
+offset_right = 1766.0
+offset_bottom = 973.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 38
+text = "How to drive forklift
+Use W,A,S,D to move the vehicle 
+LMB and RMB to adjust the lift
+R to restart
+NOTE: the forklift uses backwheels to turn instead of front so the STEERING are REVERSED
+Objective:  Lower the lift to the floor before sliding it under the desired object then deliver 
+to the designated spot.
+You will fail if you:
+-Drop the object 
+-Tip the forklift over
+-Fail to deliver it in time
+Do be warned, the forklift is rigged to EXPLODE when you fail the test. 
+Good luck!"

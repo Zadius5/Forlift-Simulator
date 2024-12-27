@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr7jdvhhvspwq"]
+
+[ext_resource type="Script" path="res://delivery_area.gd" id="1_30em8"]
+[ext_resource type="AudioStream" uid="uid://b3k1ij7ikufpl" path="res://assets/onlymp3.to - Winning Sound Effect-VJ8FQSh-H4U-192k-1706481887.mp3" id="2_i87jp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68ebm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wraww"]
+transparency = 1
+albedo_color = Color(0.556863, 1, 0.470588, 0.215686)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a0bn4"]
+material = SubResource("StandardMaterial3D_wraww")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wo7sa"]
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n25ln"]
+material = SubResource("StandardMaterial3D_wo7sa")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcdum"]
+albedo_color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_opnof"]
+material = SubResource("StandardMaterial3D_rcdum")
+top_radius = 0.01
+bottom_radius = 0.01
+
+[node name="delivery_area" type="Area3D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_30em8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_68ebm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_a0bn4")
+
+[node name="win_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_i87jp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.561955, 0)
+mesh = SubResource("BoxMesh_n25ln")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.479962, 0)
+mesh = SubResource("CylinderMesh_opnof")

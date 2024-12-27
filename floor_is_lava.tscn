@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf8aq8c0gosgm"]
+
+[ext_resource type="Script" path="res://floor_is_lava.gd" id="1_qqfln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alk1p"]
+albedo_color = Color(1, 0.188235, 0.188235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kqman"]
+size = Vector3(50, 0.1, 50)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eesdv"]
+points = PackedVector3Array(25.3919, 0.346825, 25.3919, -25.3919, -0.446825, -25.3919, -25.3919, 0.346825, -25.3919, 25.3919, -0.446825, -25.3919, -25.3919, -0.446825, 25.3919, -25.3919, 0.346825, 25.3919, 25.3919, 0.346825, -25.3919, 25.3919, -0.446825, 25.3919)
+
+[node name="floor_is_lava" type="Area3D"]
+script = ExtResource("1_qqfln")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_alk1p")
+transparency = 0.9
+mesh = SubResource("BoxMesh_kqman")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_eesdv")

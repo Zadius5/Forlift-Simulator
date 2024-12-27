@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqsvvo7d3ntdr"]
+
+[ext_resource type="Script" path="res://level_4.gd" id="1_3xl7y"]
+[ext_resource type="PackedScene" uid="uid://c04v0qws1elcq" path="res://fork_lift.tscn" id="2_vnpix"]
+[ext_resource type="PackedScene" uid="uid://cr7jdvhhvspwq" path="res://delivery_area.tscn" id="3_g6sao"]
+[ext_resource type="PackedScene" uid="uid://b7y8icoxsxby4" path="res://hud.tscn" id="4_y7ikl"]
+[ext_resource type="PackedScene" uid="uid://cf8aq8c0gosgm" path="res://floor_is_lava.tscn" id="5_4poxh"]
+[ext_resource type="PackedScene" uid="uid://dkt6k8uryq1vt" path="res://ball.tscn" id="6_ki20r"]
+[ext_resource type="PackedScene" uid="uid://d0mxiwwybkbh6" path="res://pole.tscn" id="7_3vh7b"]
+[ext_resource type="PackedScene" uid="uid://bxyfdo8056pu1" path="res://longhouse.tscn" id="7_xpyu8"]
+[ext_resource type="PackedScene" uid="uid://53whfjpd6r3x" path="res://explode_sound.tscn" id="9_6oth2"]
+[ext_resource type="PackedScene" uid="uid://odk5maj5o0b7" path="res://win_sound.tscn" id="10_wp3u5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ma4sr"]
+size = Vector3(50, 0.1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jq3t0"]
+size = Vector3(50, 0.1, 100)
+
+[node name="level_4" type="Node3D"]
+script = ExtResource("1_3xl7y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.885626, -0.446021, 0.129356, 0.10523, 0.0785641, 0.99134, -0.452321, 0.891568, -0.0226435, 0, 0, 0)
+shadow_enabled = true
+
+[node name="fork_lift" parent="." instance=ExtResource("2_vnpix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0362799, 1.0488, -42.7003)
+
+[node name="delivery_area" parent="." instance=ExtResource("3_g6sao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.365398, 4, 43.1754)
+
+[node name="hud" parent="." instance=ExtResource("4_y7ikl")]
+
+[node name="objective" parent="hud" index="3"]
+text = "OBJECTIVE : Deliver soccer ball
+"
+
+[node name="floor_is_lava" parent="." instance=ExtResource("5_4poxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+script = null
+
+[node name="MeshInstance3D" parent="floor_is_lava" index="0"]
+mesh = SubResource("BoxMesh_ma4sr")
+
+[node name="CollisionShape3D" parent="floor_is_lava" index="1"]
+shape = SubResource("BoxShape3D_jq3t0")
+
+[node name="longhouse" parent="." instance=ExtResource("7_xpyu8")]
+
+[node name="pole" parent="." instance=ExtResource("7_3vh7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 3, -24.642)
+
+[node name="pole2" parent="." instance=ExtResource("7_3vh7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 3, -11.642)
+
+[node name="pole3" parent="." instance=ExtResource("7_3vh7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, 5.896)
+
+[node name="pole4" parent="." instance=ExtResource("7_3vh7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3, 23.019)
+
+[node name="ball" parent="." instance=ExtResource("6_ki20r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332959, 0.962671, -37.0933)
+
+[node name="explode_sound" parent="." instance=ExtResource("9_6oth2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -25)
+
+[node name="win_sound" parent="." instance=ExtResource("10_wp3u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -16)
+
+[connection signal="fall" from="fork_lift" to="." method="_on_fork_lift_fall"]
+[connection signal="body_entered" from="delivery_area" to="." method="_on_delivery_area_body_entered"]
+[connection signal="next" from="hud" to="." method="_on_hud_next"]
+[connection signal="quit" from="hud" to="." method="_on_hud_quit"]
+[connection signal="restart" from="hud" to="." method="_on_hud_restart"]
+[connection signal="time_up" from="hud" to="." method="_on_hud_time_up"]
+[connection signal="body_entered" from="floor_is_lava" to="." method="_on_floor_is_lava_body_entered"]
+[connection signal="body_exited" from="floor_is_lava" to="." method="_on_floor_is_lava_body_exited"]
+
+[editable path="hud"]
+[editable path="floor_is_lava"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdrh76hdnkaqw"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_g1csw"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1915.0
+offset_bottom = 1082.0
+script = ExtResource("1_g1csw")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 203.0
+offset_right = 1340.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 60
+text = "Forklift Driving Simulator"
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 627.0
+offset_right = 1093.0
+offset_bottom = 725.0
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="Credit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 785.0
+offset_right = 1091.0
+offset_bottom = 883.0
+theme_override_font_sizes/font_size = 40
+text = "Credits
+"
+
+[node name="credit_layer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="credit_layer"]
+offset_left = 434.0
+offset_top = 468.0
+offset_right = 1524.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 40
+text = "Programming, Game Design and Modeling: Ky Trieu (Zad)
+Special thanks to all clubs members who supported me"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="credit_layer"]
+offset_left = 872.0
+offset_top = 784.0
+offset_right = 1097.0
+offset_bottom = 880.0
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 876.0
+offset_top = 932.0
+offset_right = 1096.0
+offset_bottom = 1023.0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="credit_layer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

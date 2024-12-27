@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctg3bbsj17cas"
+path="res://.godot/imported/onlymp3.to - Explosion Sound Effect-eiw7SHw4vog-192k-1706481402.mp3-7ea140f65d2adb5d93c0ce709ca69ea8.mp3str"
+
+[deps]
+
+source_file="res://assets/onlymp3.to - Explosion Sound Effect-eiw7SHw4vog-192k-1706481402.mp3"
+dest_files=["res://.godot/imported/onlymp3.to - Explosion Sound Effect-eiw7SHw4vog-192k-1706481402.mp3-7ea140f65d2adb5d93c0ce709ca69ea8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

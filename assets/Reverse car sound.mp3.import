@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhq86nav6g3k0"
+path="res://.godot/imported/Reverse car sound.mp3-19c71513dbb4fdd08e21c2dda949d22e.mp3str"
+
+[deps]
+
+source_file="res://assets/Reverse car sound.mp3"
+dest_files=["res://.godot/imported/Reverse car sound.mp3-19c71513dbb4fdd08e21c2dda949d22e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

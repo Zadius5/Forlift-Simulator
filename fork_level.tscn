@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnuuhc6y6gcg6"]
+
+[ext_resource type="Script" path="res://level_5.gd" id="1_6wcik"]
+[ext_resource type="PackedScene" uid="uid://cu22xxkyna1gs" path="res://warehouse.tscn" id="2_0sh0h"]
+[ext_resource type="PackedScene" uid="uid://c04v0qws1elcq" path="res://fork_lift.tscn" id="3_kski4"]
+[ext_resource type="PackedScene" uid="uid://dw5yit6xf4wlj" path="res://table.tscn" id="5_agjal"]
+[ext_resource type="PackedScene" uid="uid://csq887ovuf36l" path="res://fork.tscn" id="5_nvhss"]
+[ext_resource type="PackedScene" uid="uid://b7y8icoxsxby4" path="res://hud.tscn" id="6_7l3fq"]
+[ext_resource type="PackedScene" uid="uid://cr7jdvhhvspwq" path="res://delivery_area.tscn" id="7_65pkp"]
+[ext_resource type="PackedScene" uid="uid://cf8aq8c0gosgm" path="res://floor_is_lava.tscn" id="8_h00ly"]
+[ext_resource type="PackedScene" uid="uid://53whfjpd6r3x" path="res://explode_sound.tscn" id="9_dx7nh"]
+[ext_resource type="PackedScene" uid="uid://odk5maj5o0b7" path="res://win_sound.tscn" id="10_uif1t"]
+
+[node name="level5" type="Node3D"]
+script = ExtResource("1_6wcik")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.884444, -0.465628, 0.0308122, -0.0155922, 0.0954798, 0.995309, -0.466386, 0.879815, -0.0917067, 0, 0, 0)
+shadow_enabled = true
+
+[node name="warehouse" parent="." instance=ExtResource("2_0sh0h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659434, 0, 0.136455)
+
+[node name="fork_lift" parent="." instance=ExtResource("3_kski4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.295734, 1.05058, -18.6058)
+
+[node name="fork" parent="." instance=ExtResource("5_nvhss")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.879473, 2.33898, -14.708)
+
+[node name="table" parent="." instance=ExtResource("5_agjal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -14)
+
+[node name="hud" parent="." instance=ExtResource("6_7l3fq")]
+
+[node name="objective" parent="hud" index="3"]
+text = "OBJECTIVE : Deliver fork"
+
+[node name="delivery_area" parent="." instance=ExtResource("7_65pkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.424, 3.5, 19.888)
+
+[node name="floor_is_lava" parent="." instance=ExtResource("8_h00ly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+
+[node name="explode_sound" parent="." instance=ExtResource("9_dx7nh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -4)
+
+[node name="win_sound" parent="." instance=ExtResource("10_uif1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15369, 0.5, -8.38398)
+
+[connection signal="fall" from="fork_lift" to="." method="_on_fork_lift_fall"]
+[connection signal="next" from="hud" to="." method="_on_hud_next"]
+[connection signal="quit" from="hud" to="." method="_on_hud_quit"]
+[connection signal="restart" from="hud" to="." method="_on_hud_restart"]
+[connection signal="time_up" from="hud" to="." method="_on_hud_time_up"]
+[connection signal="body_entered" from="delivery_area" to="." method="_on_delivery_area_body_entered"]
+[connection signal="body_entered" from="floor_is_lava" to="." method="_on_floor_is_lava_body_entered"]
+
+[editable path="hud"]

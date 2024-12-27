@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnq0qe2bxu0cc"]
+
+[ext_resource type="PackedScene" uid="uid://cu22xxkyna1gs" path="res://warehouse.tscn" id="1_1xytd"]
+[ext_resource type="PackedScene" uid="uid://c04v0qws1elcq" path="res://fork_lift.tscn" id="2_w10tu"]
+[ext_resource type="PackedScene" uid="uid://dkt6k8uryq1vt" path="res://ball.tscn" id="3_kls6b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jkmb4"]
+friction = 0.2
+
+[node name="test_transition" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.90122, -0.433276, -0.00866812, -0.0780731, 0.142653, 0.986689, -0.426272, 0.8899, -0.162389, 0, 0, 0)
+shadow_enabled = true
+
+[node name="warehouse" parent="." instance=ExtResource("1_1xytd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.493838, 0, 1.16126)
+
+[node name="fork_lift" parent="." instance=ExtResource("2_w10tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -14.2885)
+
+[node name="ball" parent="." instance=ExtResource("3_kls6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02565, 1.16728, -12.4771)
+physics_material_override = SubResource("PhysicsMaterial_jkmb4")
